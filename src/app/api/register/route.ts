@@ -3,7 +3,7 @@ import { NextApiRequest,NextApiResponse } from 'next'
 import prismadb from '@/lib/prismadb'
 
 
-export  async function handler(req:NextApiRequest,res:NextApiResponse){
+export default async function handlerr(req:NextApiRequest,res:NextApiResponse){
     if(req.method !== 'POST'){
         return res.status(405).end()
     }
