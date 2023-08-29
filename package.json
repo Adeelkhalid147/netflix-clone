@@ -29,5 +29,12 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "prisma": "^5.2.0"
+  },
+  "build": {
+    "commands": [
+      "prisma generate",
+      "your-other-build-commands"
+    ]
   }
+  
 }
