@@ -34,7 +34,7 @@ const AuthComp = () => {
     } finally {
       setPassword("");
       setName("");
-      setEmail("");
+      setEmail("");  
     }
   };
 
