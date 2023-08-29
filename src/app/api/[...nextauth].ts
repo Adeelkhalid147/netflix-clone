@@ -24,8 +24,8 @@ export default NextAuth({
         }
         const user = await prismadb.user.findUnique({
           where: {
-            email: credentials.email,
-          },
+            email: credentials.email
+          }
         });
         if (!user || !user.hashedPassword) {
           throw new Error("Email does not exist");

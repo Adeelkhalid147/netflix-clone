@@ -1,36 +1,46 @@
 "use client";
 
 import Input from "@/components/input";
-import React from "react";
 import { useCallback, useState } from "react";
-import axios from "axios";
 
 const AuthComp = () => {
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
-    const [variant, setVariant] = useState("login");
-  
-    const toggleVariant = useCallback(() => {
-      setVariant((currentVariant) =>
-        currentVariant === "login" ? "register" : "login"
-      );
-    }, []);
-  
-    const register = useCallback(async () => {
-      try {
-        await axios.post("/api/register", {
-          email,
-          name,
-          password,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }, [email, name, password]);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [variant, setVariant] = useState("login");
+
+  const toggleVariant = useCallback(() => {
+    setVariant((currentVariant) =>
+      currentVariant === "login" ? "register" : "login"
+    );
+  }, []);
+
+  const register = async () => {
+    try {
+      await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          name: name,
+          password: password,
+        }),
+      });
+    } catch (error) {
+      // console.log(error);
+      // finally{ setPassword("") setName("") setEmail("")} user name mai likhne k bd input ko empty krta h
+    } finally {
+      setPassword("");
+      setName("");
+      setEmail("");
+    }
+  };
+
   return (
     <div>
-        <div className="bg-black w-full h-full lg:bg-opacity-50">
+      <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
           <img src="/images/logo.png" alt="Logo" className="h-12" />
         </nav>
@@ -86,7 +96,7 @@ const AuthComp = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AuthComp
+export default AuthComp;
