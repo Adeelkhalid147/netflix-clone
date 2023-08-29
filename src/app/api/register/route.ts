@@ -1,10 +1,8 @@
-
 import prismadb from "@/lib/prismadb";
 import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
-
 //   console.log("errrrr: ", req);
   // if(req.method !== 'POST'){
 
