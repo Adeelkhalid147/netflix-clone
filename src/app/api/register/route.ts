@@ -9,6 +9,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   //     return res.status(405).end()
   // }
   try {
+    
     const { email, name, password } = await req.json();
 
     const existingUser = await prismadb.user.findUnique({
