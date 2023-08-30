@@ -9,7 +9,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   //     return res.status(405).end()
   // }
   try {
-
+    
     const { email, name, password } = await req.json();
 
     const existingUser = await prismadb.user.findUnique({
@@ -32,8 +32,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         emailVerified: new Date(),
       },
     });
-    // return NextResponse.json(user);
-    return NextResponse.json("not data base");
+    return NextResponse.json(user);
   } catch (error) {
     console.log("adeel :", error);
     return NextResponse.json({ message: error });
