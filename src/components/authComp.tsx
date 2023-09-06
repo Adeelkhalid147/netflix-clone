@@ -2,8 +2,11 @@
 
 import Input from "@/components/input";
 import { useCallback, useState } from "react";
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation";
 
 const AuthComp = () => {
+  const router = useRouter()
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +40,22 @@ const AuthComp = () => {
       setEmail("");  
     }
   };
+
+  const login = async ()=>{
+    try {
+      await signIn('credentials',{
+        email,
+        password,
+        redirect:false,
+        callbackUrl:"/"
+      })
+      router.push('/')
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+  }
 
   return (
     <div>
@@ -76,7 +95,7 @@ const AuthComp = () => {
               />
             </div>
             <button
-              onClick={register}
+              onClick={variant ==='login'? login : register}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
               {variant === "login" ? "Login" : "Sign Up"}
