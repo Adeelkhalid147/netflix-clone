@@ -16,8 +16,10 @@
     "autoprefixer": "10.4.15",
     "axios": "^1.5.0",
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "mongoos": "^0.0.1-security",
     "next": "13.4.19",
     "next-auth": "^4.23.1",
     "postcss": "8.4.28",
@@ -28,6 +30,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/bcryptjs": "^2.4.3",
     "prisma": "^5.2.0"
   },
   "build": {
@@ -36,5 +39,4 @@
       "your-other-build-commands"
     ]
   }
-  
 }

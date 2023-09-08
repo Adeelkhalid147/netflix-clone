@@ -1,9 +1,10 @@
 "use client";
-
+import {useEffect} from "react"
 import Input from "@/components/input";
 import { useCallback, useState } from "react";
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const AuthComp = () => {
   const router = useRouter()
@@ -31,6 +32,7 @@ const AuthComp = () => {
           password: password,
         }),
       });
+      
     } catch (error) {
       // console.log(error);
       // finally{ setPassword("") setName("") setEmail("")} user name mai likhne k bd input ko empty krta h
@@ -41,6 +43,27 @@ const AuthComp = () => {
     }
   };
 
+
+
+ 
+
+  // const login = useCallback(async () =>{
+  //   try {
+  //     await signIn('credentials',{
+  //       email,
+  //       password,
+  //       redirect:false,
+  //       callbackUrl:'/'
+  //     })
+      
+  //   } catch (error) {
+  //     console.log(error)
+      
+  //   }
+  // },[email, password])
+  
+
+  
   const login = async ()=>{
     try {
       await signIn('credentials',{
@@ -56,6 +79,7 @@ const AuthComp = () => {
       
     }
   }
+  
 
   return (
     <div>

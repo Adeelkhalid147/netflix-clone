@@ -3,13 +3,7 @@ import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
-//   console.log("errrrr: ", req);
-  // if(req.method !== 'POST'){
-
-  //     return res.status(405).end()
-  // }
   try {
-    
     const { email, name, password } = await req.json();
 
     const existingUser = await prismadb.user.findUnique({
@@ -34,9 +28,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
     });
     return NextResponse.json(user);
   } catch (error) {
-    console.log("adeel :", error);
-    return NextResponse.json({ message: error });
+    // console.log("adeel :", error);
+    return NextResponse.json({ message: error },{status:500});
   }
 }
 
- 
+
+
+
+
